@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Направление 3. Тихая типографика</title>
+<style>
+/* Тихая типографика: тепло остаётся, жесты уходят. Ни градиентов, ни теней,
+   ни таблеток. Иерархию держит шрифт: заголовки и надписи набраны текстовой
+   антиквой, органы управления — гротеском. Цвет один и означает состояние. */
+*{box-sizing:border-box}
+html,body{margin:0}
+:root{--bg:#FAF9F6;--pn:#FFFFFF;--ink:#1A1A18;--mut:#7A7873;--ln:#E4E1DA;--ln2:#CFCAC0;
+  --acc:#8A4B3C;--accbg:#F6EFEC}
+body{background:var(--bg);color:var(--ink);
+  font:13.5px/1.5 -apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased}
+.se{font-family:Charter,"Iowan Old Style",Georgia,"Times New Roman",serif}
+
+/* шапка: название дела вместо логотипа со слоганом */
+header{background:var(--pn);border-bottom:1px solid var(--ln)}
+.hin{max-width:1320px;margin:0 auto;padding:13px 24px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+header h1{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
+header .sub{color:var(--mut);font-size:13px}
+header nav{margin-left:auto;display:flex;gap:7px}
+.btn{font:inherit;font-size:13px;padding:6px 13px;background:var(--pn);color:var(--ink);
+  border:1px solid var(--ln2);border-radius:2px;cursor:pointer}
+.btn:hover{border-color:var(--ink);}
+.btn.pri{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.pri:hover{background:#000}
+
+/* вкладки документов — подчёркиванием, не таблетками */
+.docs{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;gap:24px;
+  border-bottom:1px solid var(--ln)}
+.docs button{font:inherit;font-size:13.5px;padding:11px 0;background:none;border:0;
+  border-bottom:2px solid transparent;color:var(--mut);cursor:pointer;margin-bottom:-1px}
+.docs button.on{color:var(--ink);border-color:var(--acc);font-weight:600}
+
+.wrap{max-width:1320px;margin:0 auto;padding:22px 24px 60px;
+  display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:start}
+
+/* разделы */
+aside{position:sticky;top:22px;max-height:calc(100vh - 44px);overflow:auto}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
+  margin:0 0 9px}
+.row{display:grid;grid-template-columns:15px 1fr;gap:9px;align-items:start;padding:6px 0;
+  border-bottom:1px solid var(--ln);cursor:pointer}
+.row:first-of-type{border-top:1px solid var(--ln)}
+.row input{margin:3px 0 0;width:13px;height:13px;accent-color:var(--acc)}
+.row b{display:block;font-weight:500;font-size:13.5px;line-height:1.3}
+.row i{display:block;font-style:normal;font-size:11.5px;color:var(--mut);margin-top:1px}
+.row.off b,.row.off i{color:#ABA79E}
+.links{margin-top:16px;display:flex;flex-direction:column;gap:7px;align-items:flex-start}
+.links button{font:inherit;font-size:12.5px;background:none;border:0;padding:0;color:var(--mut);
+  cursor:pointer;border-bottom:1px solid var(--ln2)}
+.links button:hover{color:var(--ink);border-color:var(--ink)}
+
+/* лист */
+main{display:flex;flex-direction:column;align-items:center;gap:24px}
+.sheet{width:794px;max-width:100%;min-height:1123px;background:var(--pn);border:1px solid var(--ln);
+  padding:76px 57px 76px 113px;font:15px/1.55 "Times New Roman",Times,serif;color:#141414}
+.sheet p{margin:0;text-align:justify;text-indent:1.25em}
+.sheet p.sp{height:.8em;text-indent:0}
+.sheet p.r{text-align:right;text-indent:0}
+.sheet p.cb{text-align:center;text-indent:0;font-weight:700;margin:1.2em 0 .25em}
+.sheet p.cb + p.cb{margin-top:0}
+
+/* замечания */
+.notes{width:794px;max-width:100%}
+.notes ul{margin:0;padding:0;list-style:none}
+.notes li{padding:9px 0 9px 14px;border-bottom:1px solid var(--ln);position:relative}
+.notes li:first-child{border-top:1px solid var(--ln)}
+.notes li::before{content:"";position:absolute;left:0;top:14px;width:5px;height:5px;border-radius:50%;
+  background:var(--ln2)}
+.notes li.err::before{background:var(--acc)}
+.notes li b{font-weight:600;font-size:13px}
+.notes li span{display:block;color:var(--mut);font-size:12.5px;margin-top:1px}
+@media(max-width:1080px){.wrap{grid-template-columns:1fr}aside{position:static;max-height:none}
+.sheet{padding:40px 24px}}
+</style></head><body>
+
+<header><div class="hin">
+  <h1 class="se">А63-1672/2025</h1>
+  <span class="sub">Карпова Людмила Владимировна · договор купли-продажи № б/н от 14.05.2022</span>
+  <nav>
+    <button class="btn">Версии</button>
+    <button class="btn">Листы и печать</button>
+    <button class="btn pri">Скачать DOCX</button>
+  </nav>
+</div></header>
+
+<div class="docs">
+  <button class="on">Заявление об оспаривании</button>
+  <button>Ходатайство об отсрочке</button>
+  <button>Предложение о возврате</button>
+</div>
+
+<div class="wrap">
+  <aside>
+    <p class="lbl se">Разделы · 17 из 23</p>
+    <label class="row">
+     <input type="checkbox" checked>
+     <span><b>Шапка документа</b><i>Суд, заявитель, должник, ответчик</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Заголовок</b><i>Название документа по центру</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Сведения о деле</b><i>Процедура, судебный акт, полномочия</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Сведения о должнике</b><i>Реквизиты и расчёты с кредиторами</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Сведения о сделке</b><i>Предмет, стороны, дата, сумма</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Сведения об объекте</b><i>Характеристики переданного имущества</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Обстоятельства заключения</b><i>Период подозрительности</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Исполнение сделки</b><i>Передано ли имущество фактически</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Неравноценное встречное исполнение</b><i>Пункт 1 статьи 61.2</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Безвозмездная передача</b><i>Пункт 1 статьи 61.2</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Вред имущественным правам кредиторов</b><i>Пункт 2 статьи 61.2</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Мнимость сделки</b><i>Статья 170 ГК РФ</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Заинтересованность сторон</b><i>Статья 19 Закона о банкротстве</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Предпочтительное удовлетворение</b><i>Статья 61.3</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Осведомлённость контрагента</b><i>Что знал ответчик</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Возникновение просрочек</b><i>Таблица по отчёту ОКБ</i></span>
+   </label>
+<label class="row off">
+     <input type="checkbox">
+     <span><b>Просрочка на дату сделки</b><i>Таблица по отчёту ОКБ</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Правовое обоснование</b><i>Нормы и разъяснения Пленума</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Последствия недействительности</b><i>Статья 167 ГК, статья 61.6</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Просительная часть</b><i>Требования к суду</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Государственная пошлина</b><i>Расчёт и отсрочка</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Приложения</b><i>Сквозная нумерация</i></span>
+   </label>
+<label class="row">
+     <input type="checkbox" checked>
+     <span><b>Подпись</b><i>Управляющий и дата</i></span>
+   </label>
+    <div class="links">
+      <button>Собрать заново по основаниям</button>
+      <button>Библиотека блоков</button>
+      <button>Сохранить версию</button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="sheet">
+<p class="r">В Арбитражный суд Ставропольского края</p>
+<p class="r">355029, г. Ставрополь, ул. Мира, 458 «Б»</p>
+<p class="sp"></p>
+<p class="r">Дело № А63-1672/2025</p>
+<p class="r">Цена иска: 1 418 640,00 руб.</p>
+<p class="r">Государственная пошлина: 33 779,50 руб.</p>
+<p class="sp"></p>
+<p class="r">Заявитель: финансовый управляющий имуществом должника</p>
+<p class="r">Карповой Людмилы Владимировны</p>
+<p class="r">Королева Евгения Леонидовна</p>
+<p class="r">адрес для корреспонденции: 454128, Челябинская обл.,</p>
+<p class="r">г. Челябинск, пр-кт Победы, д. 319А, а/я 10764</p>
+<p class="sp"></p>
+<p class="r">Должник: Карпова Людмила Владимировна</p>
+<p class="r">11.05.1958 г.р., ИНН 262809723459</p>
+<p class="r">адрес: 357736, Ставропольский край, г. Кисловодск,</p>
+<p class="r">пр-кт Победы, д. 33А, кв. 12</p>
+<p class="sp"></p>
+<p class="r">Ответчик: Юхмашова Татьяна Алексеевна</p>
+<p class="r">адрес: 357700, Ставропольский край, г. Кисловодск,</p>
+<p class="r">ул. Ермолова, д. 4, кв. 22</p>
+<p class="cb">ЗАЯВЛЕНИЕ</p>
+<p class="cb">о признании сделки должника недействительной</p>
+<p class="">Решением Арбитражного суда Ставропольского края от 12.03.2025 по делу № А63-1672/2025 Карпова Людмила Владимировна признана несостоятельной (банкротом), в отношении неё введена процедура реализации имущества гражданина. Финансовым управляющим утверждена Королева Евгения Леонидовна.</p>
+<p class="">14.05.2022 между Карповой Людмилой Владимировной и Юхмашовой Татьяной Алексеевной заключён договор купли-продажи № б/н, по условиям которого должник передал в собственность ответчика квартиру площадью 62,4 кв. м, кадастровый номер 26:34:080215:1234, расположенную по адресу: Ставропольский край, г. Кисловодск, пр-кт Победы, д. 33А, кв. 12.</p>
+<p class="">Цена сделки по договору составила 100 000,00 руб. Согласно решению об оценке от 20.06.2025 рыночная стоимость отчуждённого имущества на дату совершения сделки составляла 1 418 640,00 руб. (Один миллион четыреста восемнадцать тысяч шестьсот сорок рублей 00 копеек).</p>
+<p class="">Таким образом, цена сделки занижена в 14,19 раза относительно рыночной стоимости имущества.</p>
+<p class="">Согласно пункту 1 статьи 61.2 Закона о банкротстве сделка, совершённая должником в течение одного года до принятия заявления о признании банкротом или после принятия указанного заявления, может быть признана недействительной при неравноценном встречном исполнении обязательств другой стороной сделки, в том числе если цена этой сделки существенно в худшую для должника сторону отличается от цены, при которой в сравнимых обстоятельствах совершаются аналогичные сделки.</p>
+<p class="">В результате совершения сделки из состава имущества должника выбыл актив стоимостью 1 418 640,00 руб., за счёт которого могли быть удовлетворены требования кредиторов. Из конкурсной массы выбыл единственный ликвидный актив.</p>
+<p class="">В соответствии с пунктом 2 статьи 61.2 Закона о банкротстве сделка, совершённая должником в целях причинения вреда имущественным правам кредиторов, может быть признана судом недействительной, если такая сделка была совершена в течение трёх лет до принятия заявления о признании должника банкротом и в результате её совершения был причинён вред имущественным правам кредиторов, а другая сторона сделки знала об указанной цели должника к моменту совершения сделки.</p>
+<p class="">Юхмашова Татьяна Алексеевна является заинтересованным по отношению к должнику лицом. Основания заинтересованности: [не заполнено].</p>
+<p class="cb">ПРОШУ:</p>
+<p class="">1. Признать недействительным договор купли-продажи № б/н от 14.05.2022, заключённый между Карповой Людмилой Владимировной и Юхмашовой Татьяной Алексеевной.</p>
+<p class="">2. Применить последствия недействительности сделки, обязав Юхмашову Татьяну Алексеевну возвратить в конкурсную массу должника квартиру с кадастровым номером 26:34:080215:1234.</p>
+    </div>
+    <div class="notes">
+      <p class="lbl se">Замечания</p>
+      <ul>
+<li class="err"><b>Не заполнено</b><span>Основания заинтересованности сторон</span></li>
+<li class="warn"><b>Дата возбуждения дела не указана</b><span>период подозрительности не проверен</span></li>
+<li class="warn"><b>К сделке не приложено ни одного документа</b><span>блок «Приложения» пуст</span></li>
+<li class="ok"><b>Рыночная стоимость выше цены договора в 14,19 раза</b><span>неравноценность подтверждается</span></li>
+      </ul>
+    </div>
+  </main>
+</div>
+</body></html>
